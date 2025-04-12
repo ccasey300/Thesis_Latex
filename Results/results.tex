@@ -18,6 +18,118 @@ Ground truth gathering in Israel was done using a virtual machine as described i
 \section{Website Connectivity Tests}
 \subsection{Public OONI Database}
 \subsection{Ground Truth via SSH}
+\subsection{my-websites.txt}
+This file contains the additional 170 website connectivity tests I wished to conduct. The list was compiled with Griff Steinman, and additional tests relating to Israel were added. The contents can be found within the Appendix section. Below is a summary of the results from the daily running of this additional web connectivity test suite.
+
+\begin{table}[H]
+\centering
+\caption{Summary of Blocked vs. Unblocked Websites by Country}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Country} & \textbf{Unblocked} & \textbf{Blocked} \\
+\midrule
+Ireland & 151 & 19 \\
+Israel    & 155 & 15 \\   
+\bottomrule
+\end{tabular}
+\label{tab:blocked_summary}
+\end{table}
+
+The following figure illustrates the blocking methods for the additional web connectivity tests. 
+
+\begin{table}[H]
+\centering
+\caption{Distribution of Blocking Methods Detected in Ireland \&Israel}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Blocking Method} & \textbf{Ireland} & \textbf{Israel} \\
+\midrule
+TCP/IP         & 15 & 13 \\
+DNS            & 1  & 1  \\
+HTTP           & 1  & 1  \\
+Error/Failure  & 3  & 0  \\
+\bottomrule
+\end{tabular}
+\label{tab:blocking_methods_comparison}
+\end{table}
+
+\section*{Blocked Websites by Method}
+
+
+
+\begin{tabular}{ll} 
+\caption{Ireland}
+\toprule
+\textbf{Blocking Method} & \textbf{Websites} \\
+\midrule
+TCP/IP & \url{http://www.socom.mil} \\
+       & \url{https://www.mp3.com} \\
+       & \url{http://www.bittornado.com} \\
+       & \url{https://libgen.life} \\
+       & \url{http://www.oic-oci.org} \\
+       & \url{https://doh.centraleu.pi-dns.com/dns-query?...} \\
+       & \url{https://im0-tub-com.yandex.net/...} \\
+       & \url{https://www.xroxy.com} \\
+       & \url{http://www.queernet.org} \\
+       & \url{https://www.gamku.com} \\
+       & \url{https://www.onlinearabiccasino.com} \\
+       & \url{https://www.iasj.net} \\
+       & \url{https://www.shabakaty.com} \\
+       & \url{http://alhikmae.com} \\
+\midrule
+DNS    & \url{https://thepiratebay.org} \\
+       & \url{https://kickasstorrents.to} \\
+       & \url{https://www.iconnecthere.com} \\
+       & \url{https://www.rt.com} \\
+\midrule
+HTTP   & \url{http://www.euthanasia.cc} \\
+\bottomrule
+\end{tabular}
+
+\vspace{1cm}
+
+\textbf{Israel}
+
+\begin{tabular}{ll} [H]
+\toprule
+\textbf{Blocking Method} & \textbf{Websites} \\
+\midrule
+TCP/IP & \url{http://www.socom.mil} \\
+       & \url{https://www.mp3.com} \\
+       & \url{http://www.bittornado.com} \\
+       & \url{https://libgen.life} \\
+       & \url{http://www.oic-oci.org} \\
+       & \url{https://doh.centraleu.pi-dns.com/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB} \\
+       & \url{https://im0-tub-com.yandex.net/i?id=462f375c96139f1e41d919b44be2d780\&n=13\&exp=1} \\
+       & \url{https://www.xroxy.com} \\
+       & \url{http://www.queernet.org} \\
+       & \url{https://www.onlinearabiccasino.com} \\
+       & \url{https://www.iasj.net} \\
+       & \url{http://alhikmae.com} \\
+       & \url{https://www.shabakaty.com} \\
+\midrule
+DNS    & \url{https://www.gamku.com} \\
+\midrule
+HTTP   & \url{http://www.euthanasia.cc} \\
+\bottomrule
+\end{tabular}
+
+
+
+\subsection{Investigating Aljazeera.com}
+Upon initial testing of Aljazeera blocking in Israel, it was surprising to see no evidence of blocking. To investigate further it was decided that the content of the site should be examined and a variety of URLs belonging to it should be tested. Particular attention was given to articles that were critical of Israel.
+
+The file sample\_aljazeeraurls.txt contains 100 URLs for articles hosted on https://aljazeera.com. Below are some helpful commands used to obtain the sitemap and extract URLs for testing. Wget was used to examine the contents of the web page, and the following was observed.
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\linewidth]{wgetAljazeera.png}
+    \caption{wget showing aljazeera.com content}
+    \label{fig:enter-label}
+\end{figure}
+
+
+As seen above, I was able to see unblocked content from the site. Within Appendix, one can find a sample of articles being tested. 
 
 
 \section{Circumvention Tests}
@@ -39,6 +151,24 @@ Ground truth gathering in Israel was done using a virtual machine as described i
 
 \section{Guide to Replicating Results}
 
+\subsection{Investigating Aljazeera.com}
+Below are some commands I found helpful while investigating aljazeera.com.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{AljazeeraURLs1.png}
+    \caption{Using curl and grep to scrape URLs for articles}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+\includegraphics[width=1\linewidth]{AljazeeraComs2.png}
+    \caption{Inserting a dash after each URL, can now be ran with OONI}
+    \label{fig:enter-label}
+\end{figure}
+
+
 \subsection{Raspberry Pi Setup}
 \textbf{Operating System}
 The operating system used was the latest available version of Raspberry Pi OS (64-bit) at the time of testing. It was flashed using the Raspberry Pi Imager application over USB. 
@@ -53,25 +183,13 @@ The operating system used was the latest available version of Raspberry Pi OS (6
 
 
 \textbf{Packages Installed}
-In order to install the OONI probe CLI, the guide 'Install OONI Probe CLI on Debian/Ubuntu Linux' \cite{ooni-cli-install}. The process was similar to that of installing on the Israeli VM. One obstacle faced in both instances were OpenPGP errors. To solve, the permissions for OONI probe had to be updated to bypass PGP signature verification. To do this, /etc/apt/sources.list.d/ooniprobe.list was edited to include '[trusted=yes]'
-\begin{figure}
+In order to install the OONI probe CLI, the guide 'Install OONI Probe CLI on Debian/Ubuntu Linux' \cite{ooni-cli-install} was followed. The process was similar to that of installing on the Israeli VM. One obstacle faced in both instances were OpenPGP errors. To solve, the permissions for OONI probe had to be updated to bypass PGP signature verification. To do this, /etc/apt/sources.list.d/ooniprobe.list was edited to include '[trusted=yes]'
+
+\begin{figure} [H]
     \centering
-    \includegraphics[width=0.5\linewidth]{PGPERROR.png}
+    \includegraphics[width=0.75\linewidth]{PGPERROR.png}
     \caption{PGP Error installing CLI}
     \label{fig:enter-label}
 \end{figure}
 
 
-\begin{table}
-\centering
-\caption{Summary of Blocked vs. Unblocked Websites by Country}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Country} & \textbf{Unblocked} & \textbf{Blocked} \\
-\midrule
-Ireland & XXX & XXX \\
-Israel    & XXX & XXX \\   
-\bottomrule
-\end{tabular}
-\label{tab:blocked_summary}
-\end{table}
