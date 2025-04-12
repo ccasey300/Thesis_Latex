@@ -16,14 +16,35 @@ Ground truth gathering in Israel was done using a virtual machine as described i
 
 
 \section{Website Connectivity Tests}
-\subsection{Public OONI Database}
+
+
 \subsection{Ground Truth via SSH}
+\subsection{Native Website Connectivity Tests}
+This sections details the results of daily web connectivity testing using the command \textit{ooniprobe run}. 
+
+\begin{table}[H]
+\centering
+\caption{Summary of Tested vs. Blocked Websites by Country (Native to OONI)}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Country} & \textbf{Tested} & \textbf{Blocked} \\
+\midrule
+Ireland & 1695 & 25 \\
+Israel    & 1695 & 16 \\   
+\bottomrule
+\end{tabular}
+\label{tab:blocked_summary}
+\end{table}
+
+MORE ON THIS?? CATEGORISATION??
+
+
 \subsection{my-websites.txt}
 This file contains the additional 170 website connectivity tests I wished to conduct. The list was compiled with Griff Steinman, and additional tests relating to Israel were added. The contents can be found within the Appendix section. Below is a summary of the results from the daily running of this additional web connectivity test suite.
 
 \begin{table}[H]
 \centering
-\caption{Summary of Blocked vs. Unblocked Websites by Country}
+\caption{Summary of Blocked vs. Unblocked Websites by Country (my-websites)}
 \begin{tabular}{lcc}
 \toprule
 \textbf{Country} & \textbf{Unblocked} & \textbf{Blocked} \\
@@ -35,7 +56,7 @@ Israel    & 155 & 15 \\
 \label{tab:blocked_summary}
 \end{table}
 
-The following figure illustrates the blocking methods for the additional web connectivity tests. 
+The following figure illustrates the blocking methods for the additional web connectivity tests. See Appendix section for a more detailed breakdown of positive results for each locale.
 
 \begin{table}[H]
 \centering
@@ -53,73 +74,38 @@ Error/Failure  & 3  & 0  \\
 \label{tab:blocking_methods_comparison}
 \end{table}
 
-\section*{Blocked Websites by Method}
-
-
-
-\begin{tabular}{ll} 
-\caption{Ireland}
+\begin{table}[H]
+\centering
+\caption{Blocked Websites by Category and Country}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Blocking Method} & \textbf{Websites} \\
+\textbf{Category} & \textbf{Total Websites Tested} & \textbf{Ireland} & \textbf{Israel} \\
 \midrule
-TCP/IP & \url{http://www.socom.mil} \\
-       & \url{https://www.mp3.com} \\
-       & \url{http://www.bittornado.com} \\
-       & \url{https://libgen.life} \\
-       & \url{http://www.oic-oci.org} \\
-       & \url{https://doh.centraleu.pi-dns.com/dns-query?...} \\
-       & \url{https://im0-tub-com.yandex.net/...} \\
-       & \url{https://www.xroxy.com} \\
-       & \url{http://www.queernet.org} \\
-       & \url{https://www.gamku.com} \\
-       & \url{https://www.onlinearabiccasino.com} \\
-       & \url{https://www.iasj.net} \\
-       & \url{https://www.shabakaty.com} \\
-       & \url{http://alhikmae.com} \\
-\midrule
-DNS    & \url{https://thepiratebay.org} \\
-       & \url{https://kickasstorrents.to} \\
-       & \url{https://www.iconnecthere.com} \\
-       & \url{https://www.rt.com} \\
-\midrule
-HTTP   & \url{http://www.euthanasia.cc} \\
+Uncategorized                      & 34 & 4 & 4 \\
+Piracy / Streaming / File Sharing  & 21 & 6 & 4 \\
+News / Media                       & 34 & 1 & 0 \\
+Adult Content                      & 21 & 0 & 0 \\
+Creative / Educational / Misc      & 15 & 1 & 1 \\
+General / National Services        & 19 & 1 & 1 \\
+Streaming / Social Media           & 9  & 0 & 0 \\
+Religious                          & 5  & 2 & 2 \\
+VoIP / Communication               & 4  & 1 & 0 \\
+Gambling                           & 2  & 1 & 1 \\
+Email/Privacy Tools                & 3  & 1 & 0 \\
+Adult / Alcohol                    & 2  & 1 & 1 \\
+LGBTQ+                             & 1  & 1 & 1 \\
+AI / Technology                    & 1  & 0 & 0 \\
 \bottomrule
 \end{tabular}
-
-\vspace{1cm}
-
-\textbf{Israel}
-
-\begin{tabular}{ll} [H]
-\toprule
-\textbf{Blocking Method} & \textbf{Websites} \\
-\midrule
-TCP/IP & \url{http://www.socom.mil} \\
-       & \url{https://www.mp3.com} \\
-       & \url{http://www.bittornado.com} \\
-       & \url{https://libgen.life} \\
-       & \url{http://www.oic-oci.org} \\
-       & \url{https://doh.centraleu.pi-dns.com/dns-query?dns=q80BAAABAAAAAAAAA3d3dwdleGFtcGxlA2NvbQAAAQAB} \\
-       & \url{https://im0-tub-com.yandex.net/i?id=462f375c96139f1e41d919b44be2d780\&n=13\&exp=1} \\
-       & \url{https://www.xroxy.com} \\
-       & \url{http://www.queernet.org} \\
-       & \url{https://www.onlinearabiccasino.com} \\
-       & \url{https://www.iasj.net} \\
-       & \url{http://alhikmae.com} \\
-       & \url{https://www.shabakaty.com} \\
-\midrule
-DNS    & \url{https://www.gamku.com} \\
-\midrule
-HTTP   & \url{http://www.euthanasia.cc} \\
-\bottomrule
-\end{tabular}
-
-
+\label{tab:category_block}
+\end{table}
 
 \subsection{Investigating Aljazeera.com}
 Upon initial testing of Aljazeera blocking in Israel, it was surprising to see no evidence of blocking. To investigate further it was decided that the content of the site should be examined and a variety of URLs belonging to it should be tested. Particular attention was given to articles that were critical of Israel.
 
 The file sample\_aljazeeraurls.txt contains 100 URLs for articles hosted on https://aljazeera.com. Below are some helpful commands used to obtain the sitemap and extract URLs for testing. Wget was used to examine the contents of the web page, and the following was observed.
+
+Despite preconceived notions, Aljazeera and its articles were not found to be blocked on AS44709. Reasons for this will be explored in the coming chapter.
 
 \begin{figure} [H]
     \centering
@@ -130,6 +116,36 @@ The file sample\_aljazeeraurls.txt contains 100 URLs for articles hosted on http
 
 
 As seen above, I was able to see unblocked content from the site. Within Appendix, one can find a sample of articles being tested. 
+
+\subsection{Public OONI Database}
+In this section, the OONI database will be explored. 
+
+
+\begin{table}[H]
+\centering
+\caption{Website Blocking based on Public OONI Data}
+\begin{tabular}{lcc}
+\toprule
+\textbf{} & \textbf{Ireland} & \textbf{Israel} \\
+\midrule
+Number of Websites Tested           & XXX & XXX \\
+Number of Successful Connections    & XXXX & XX \\
+Number of Anomalies                 & XX & XX \\
+Number of Failures                  & XX & XX \\
+\bottomrule
+\end{tabular}
+\label{tab:category_block}
+\end{table}
+
+By examining the publicly available data on Aljazeera and filtering based on ASN, an interesting picture emerges. There is clear evidence of large scale DNS tampering on certain ASNs, while others go unblocked. Prior to my testing using the VM in Tel Aviv, it was unknown whether O.M.C. COMPUTERS \& COMMUNICATIONS LTD (AS44709) was blocking this content. 
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\linewidth]{ALJZRbyASN.png}
+    \caption{OONI data (04/03/2025 - 11/04/2025) showing blocking of Alazeera.com grouped by ASN}
+    \label{fig:enter-label}
+\end{figure}
+
 
 
 \section{Circumvention Tests}
