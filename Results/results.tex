@@ -1,6 +1,6 @@
 \chapter{Results}
 \section{Overview}
-Tests were conducted between the 1st of April and the 11th 2025. The OONI probe App was also ran on occasion on Windows and mobile devices, though this test suite is far less comprehensive in comparison to the CLI. 
+Tests were conducted over a two week period between 31/03/25 and 13/04/25. Seven days worth of tests were exported from both machines for comparison and analysis. The results are discussed below, with pertinent tables included in the Appendix section. In comparison, the OONI database that is publicly available was analysed for the dates 13/03/25 to 13/04/25. 
 
 It is important to recognize that, particularly in the case of Israel, different individuals may experience censorship of the Internet to varying degrees. The research focuses on replicating the experience of the average Israeli living in Tel Aviv. Having previously discussed the Gaza Strip, it is clear that the user experience varies greatly between the two areas. Further research may look at comparing Internet censorship experienced internally in Israel, but that is outside the scope of this work.
 
@@ -20,7 +20,7 @@ Ground truth gathering in Israel was done using a virtual machine as described i
 
 \subsection{Ground Truth via SSH}
 \subsection{Native Website Connectivity Tests}
-This sections details the results of daily web connectivity testing using the command \textit{ooniprobe run}. 
+This section details the results of the daily web connectivity tests performed using the command \textit{ooniprobe run}. 
 
 \begin{table}[H]
 \centering
@@ -36,7 +36,7 @@ Israel    & 1695 & 16 \\
 \label{tab:blocked_summary}
 \end{table}
 
-MORE ON THIS?? CATEGORISATION??
+
 
 
 \subsection{my-websites.txt}
@@ -118,20 +118,35 @@ Despite preconceived notions, Aljazeera and its articles were not found to be bl
 As seen above, I was able to see unblocked content from the site. Within Appendix, one can find a sample of articles being tested. 
 
 \subsection{Public OONI Database}
-In this section, the OONI database will be explored. 
+In this section, the OONI database will be explored. As mentioned previously the period to be considered is 13/03/25 to 13/04/25. Below is a screenshot of all web connectivity tests conducted in Israel and Ireland for these dates. 
 
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\linewidth]{IREWEBSOONIDB.png}
+    \caption{Irish OONI Database Web connectivity tests 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
 
-\begin{table}[H]
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=1\linewidth]{ISRWEBSOONIDB.png}
+    \caption{Israel OONI Database Web connectivity tests 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+Further insight into this data can be seen through the proceeding table that documents a daily averages. 
+
+\begin{table} [H]
 \centering
 \caption{Website Blocking based on Public OONI Data}
 \begin{tabular}{lcc}
 \toprule
 \textbf{} & \textbf{Ireland} & \textbf{Israel} \\
-\midrule
-Number of Websites Tested           & XXX & XXX \\
-Number of Successful Connections    & XXXX & XX \\
-Number of Anomalies                 & XX & XX \\
-Number of Failures                  & XX & XX \\
+% \midrule
+Number of Websites Tested           & 2603 &  2299 \\
+Number of Successful Connections    & 2491 & 2195 \\
+Number of Anomalies                 & 67 & 53 \\
+Number of Failures                  & 46 & 51 \\
 \bottomrule
 \end{tabular}
 \label{tab:category_block}
@@ -148,16 +163,135 @@ By examining the publicly available data on Aljazeera and filtering based on ASN
 
 
 
-\section{Circumvention Tests}
-\subsection{Public OONI Database}
+\section{Instant Messaging Tests}
+By analysing the publicly available OONI data for both countries for the period of interest we can see little evidence of blocking of instant messaging platforms in either country.
+
+\subsection{Public OONI Database: Ireland}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREOONIDBIMFB.png}
+    \caption{Facebook Messenger test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREOONIDBIMTL.png}
+    \caption{Telegram test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREOONIDBIMWHATS.png}
+    \caption{WhatsApp test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREOONIDBSIG.png}
+    \caption{Signal test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+
+
+\subsection{Public OONI Database: Israel}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONIDBFB.png}
+    \caption{Facebook Messenger test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONIDBIM.png}
+    \caption{Telegram test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONIDBTEL.png}
+    \caption{WhatsApp test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONIDBSIG.png}
+    \caption{Signal test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+
 \subsection{Ground Truth via SSH}
 
-\section{Instant Messaging Tests}
-\subsection{Public OONI Database}
+\section{Circumvention Tests}
+\subsection{Public OONI Database: Ireland}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREDBPSI.png}
+    \caption{Psiphon test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREDBTOR.png}
+    \caption{TOR test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONIPSI.png}
+    \caption{Psiphon test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONITOR.png}
+    \caption{TOR test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
 \subsection{Ground Truth via SSH}
 
 \section{Middlebox Tests}
-\subsection{Public OONI Database}
+\subsection{Public OONI Database: Ireland}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREOONIDBMB1.png}
+    \caption{HTTP Invalid Request test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{IREOONIDBMB2.png}
+    \caption{HTTP Header Field Manipulation test results for Ireland 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\subsection{Public OONI Database: Israel}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONIDBMB1.png}
+    \caption{HTTP Invalid Request test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{ISROONIDBMB2.png}
+    \caption{HTTP Header Field Manipulation test results for Israel 13/03-13/04}
+    \label{fig:enter-label}
+\end{figure}
+
 \subsection{Ground Truth via SSH}
 
 \section{Comparitive Analysis: Ireland vs. Israel}
@@ -170,14 +304,14 @@ By examining the publicly available data on Aljazeera and filtering based on ASN
 \subsection{Investigating Aljazeera.com}
 Below are some commands I found helpful while investigating aljazeera.com.
 
-\begin{figure}[H]
+\begin{figure} [H]
     \centering
     \includegraphics[width=1\linewidth]{AljazeeraURLs1.png}
     \caption{Using curl and grep to scrape URLs for articles}
     \label{fig:enter-label}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure} [H]
     \centering
 \includegraphics[width=1\linewidth]{AljazeeraComs2.png}
     \caption{Inserting a dash after each URL, can now be ran with OONI}
